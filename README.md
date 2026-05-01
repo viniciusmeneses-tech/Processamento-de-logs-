@@ -10,6 +10,10 @@ Clone do repositório:
 
 git clone https://github.com/viniciusmeneses-tech/Processamento-de-logs-.git && cd Processamento-de-logs-
 
+code .
+
+mvn clean install
+
 
 **REGRAS DE CONTRIBUIÇÃO**
 
