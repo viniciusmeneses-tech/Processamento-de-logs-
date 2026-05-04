@@ -43,8 +43,23 @@ public class Processamento{
 	}
 	
 	public void opcaoQuatro() {
-		
-		
+		int tamanhos = 0;
+		int quantidade = 0;
+		LocalDateTime inicio2021 = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
+		LocalDateTime fim2021 = LocalDateTime.of(2022, 01, 01, 0, 0, 0);
+		for (int i = 0; i < dadosbrutos.size(); i++) {
+			String metodo = dadosbrutos.get(i).getmetodo();
+			LocalDateTime data = dadosbrutos.get(i).getdata();
+			if ( metodo.equals("POST") && data.isAfter(inicio2021) && data.isBefore(fim2021)) {
+				tamanhos += dadosbrutos.get(i).gettamanhoObj();
+				quantidade += 1;
+				
+			}
+			
+		}
+		int media = tamanhos/quantidade;
+		System.out.printf("O total de requisições do tipo POST em 2021 é de: %d", quantidade);
+		System.out.printf("\nA média do tamanho destas requisições é de: %d", media);
 	}
 }
 
