@@ -42,6 +42,53 @@ public class Processamento{
 		escrita.salvarArquivo("naoRespondidosNovembro.txt", dadosprocessados);
 	}
 	
+	public void opcaoTres() {
+		List<String> sistemasOperacionais = new ArrayList<>();
+		float[] quantidadeSO = {0, 0, 0, 0, 0, 0};
+		LocalDateTime inicio2021 = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
+		LocalDateTime fim2021 = LocalDateTime.of(2022, 01, 01, 0, 0, 0);
+		for (int i = 0; i < dadosbrutos.size(); i++) {
+			LocalDateTime data = dadosbrutos.get(i).getdata();
+			String tipoSO = dadosbrutos.get(i).getuserAgent();
+			if (data.isAfter(inicio2021) && data.isBefore(fim2021)) {
+				
+				if (tipoSO.contains("Android") || tipoSO.contains("Mobile")) {
+				    quantidadeSO[4] += 1;
+				}
+				else if (tipoSO.contains("Windows")){
+					quantidadeSO[0] += 1;
+				}
+				else if (tipoSO.contains("Macintosh")){
+					quantidadeSO[1] += 1;
+				}
+				else if (tipoSO.contains("Ubuntu")) {
+					quantidadeSO[2] += 1;
+				}
+				else if (tipoSO.contains("Fedora")) {
+				    quantidadeSO[3] += 1;
+				}
+				
+				else if (tipoSO.contains("X11")) {
+				    quantidadeSO[5] += 1;
+				}
+				
+			}
+		}
+		
+		float total = 0;
+		for (int i = 0; i < 6; i ++) {
+			total += quantidadeSO[i];
+		}
+		String[] sistemas = {"Windows", "Macintosh", "Ubuntu", "Fedora", "Mobile", "Linux, outros"};
+		for (int i = 0; i < 6; i++) {
+			sistemasOperacionais.add( sistemas[i] + " " + String.format("%.4f", (quantidadeSO[i]/total * 100)));
+		}
+		
+		Escrita escrita = new Escrita();
+		escrita.salvarArquivo("sistemasOperacionais.txt", sistemasOperacionais);
+		
+	}
+	
 	public void opcaoQuatro() {
 		int tamanhos = 0;
 		int quantidade = 0;
