@@ -9,7 +9,6 @@ public class Processamento{
 		this.dadosbrutos = dadosbrutos;
 	}
 	
-	
 	public void opcaoUm() {
 		List<String> dadosprocessados = List.of();
 		for(int n=0; n<dadosbrutos.size();n++){
