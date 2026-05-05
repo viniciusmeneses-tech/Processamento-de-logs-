@@ -1,4 +1,82 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Leitura {
 
+    private String entrada = "caminho/do/arquivo.log"; //precisa adicionar o caminho ainda
+
+    public List<Dados> lerArquivo() {
+
+        List<Dados> listaDados = new ArrayList<>();
+        BufferedReader leitor = null;
+
+        try {
+            leitor = new BufferedReader(new FileReader(entrada));
+            String linha;
+
+            while ((linha = leitor.readLine()) != null) {
+                Dados dado = separarLinhas(linha);
+                listaDados.add(dado);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo.");
+
+        } finally {
+            try {
+                if (leitor != null) {
+                    leitor.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Erro ao fechar o arquivo.");
+            }
+        }
+
+        return listaDados;
+    }
+
+
+    private Dados separarLinhas(String linha) {
+
+        String regex = "^(\\S+) \\S+ \\S+ \\[([^\\]]+)\\] \"([^\"]+)\" (\\d{3}) (\\S+) \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(linha);
+
+        if (matcher.find()) {
+
+            String ip = matcher.group(1);
+
+            // Data e hora converter para LocalDateTime
+            String dataTexto = matcher.group(2); // 19/Dec/2020:13:57:26 + 0100 em LocalDateTime
+            DateTimeFormatter formatter =
+                    DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss Z");
+            LocalDateTime data = LocalDateTime.parse(dataTexto, formatter);
+
+            //"GET /index.php HTTP/1.1"
+            String requisicao = matcher.group(3);
+            String[] partesReq = requisicao.split(" ");
+            String metodo = partesReq[0];
+            String recurso = partesReq[1];
+
+            int codigoResposta = Integer.parseInt(matcher.group(4));
+            int tamanhoObj = Integer.parseInt(matcher.group(5));
+
+            String referencia = matcher.group(6);
+            String userAgent = matcher.group(7);
+
+            //No log não existe userID pra usar
+            String userID = "-";
+
+            return new Dados(ip,userID, data, metodo,recurso,codigoResposta,tamanhoObj,userAgent,referencia);
+        }
+
+        return null;
+    }
 }
