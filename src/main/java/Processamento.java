@@ -8,11 +8,7 @@ public class Processamento{
 	private Processamento(List<Dados> dadosbrutos){
 		this.dadosbrutos = dadosbrutos;
 	}
-	
-<<<<<<< HEAD
-	
-=======
->>>>>>> vinicius-branch
+
 	public void opcaoUm() {
 		List<String> dadosprocessados = List.of();
 		for(int n=0; n<dadosbrutos.size();n++){
