@@ -14,10 +14,10 @@ public class Processamento{
 	public void opcaoUm() {
 		List<String> dadosprocessados = new ArrayList<>();
 		for(int n=0; n<dadosbrutos.size();n++){
-			int codigo=dadosbrutos.get(n).getcodigoResposta();
-			int tamanho=dadosbrutos.get(n).gettamanhoObj();
+			int codigo=dadosbrutos.get(n).getCodigoResposta();
+			int tamanho=dadosbrutos.get(n).getTamanhoObj();
 			if( codigo >= 200 && codigo <= 299 && tamanho > 2000){
-				String dado = (dadosbrutos.get(n).getcodigoResposta())+ " " + (dadosbrutos.get(n).gettamanhoObj())+ " " + (dadosbrutos.get(n).getIP());
+				String dado = (dadosbrutos.get(n).getCodigoResposta())+ " " + (dadosbrutos.get(n).getTamanhoObj())+ " " + (dadosbrutos.get(n).getIP());
 				dadosprocessados.add(dado);
 			}
 		}
@@ -30,9 +30,9 @@ public class Processamento{
 		LocalDateTime dataantes=LocalDateTime.of(2021, 10, 31, 23, 59, 59);
 		LocalDateTime datadepois=LocalDateTime.of(2021, 12, 1, 00, 00, 00);
 		for(int n=0; n<dadosbrutos.size();n++){
-			int codigo=dadosbrutos.get(n).getcodigoResposta();
-			String ref=dadosbrutos.get(n).getreferencia();
-			LocalDateTime data=dadosbrutos.get(n).getdata();
+			int codigo=dadosbrutos.get(n).getCodigoResposta();
+			String ref=dadosbrutos.get(n).getReferencia();
+			LocalDateTime data=dadosbrutos.get(n).getData();
 			if( codigo >= 400 && codigo <= 499 && data.isAfter(dataantes) && data.isBefore(datadepois)){
 				String dado = (codigo) + " \"" +(ref)+ "\" " +"Nov/2021";
 				dadosprocessados.add(dado);
@@ -48,8 +48,8 @@ public class Processamento{
 		LocalDateTime inicio2021 = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
 		LocalDateTime fim2021 = LocalDateTime.of(2022, 01, 01, 0, 0, 0);
 		for (int i = 0; i < dadosbrutos.size(); i++) {
-			LocalDateTime data = dadosbrutos.get(i).getdata();
-			String tipoSO = dadosbrutos.get(i).getuserAgent();
+			LocalDateTime data = dadosbrutos.get(i).getData();
+			String tipoSO = dadosbrutos.get(i).getUserAgent();
 			if (data.isAfter(inicio2021) && data.isBefore(fim2021)) {
 				
 				if (tipoSO.contains("Android") || tipoSO.contains("Mobile")) {
@@ -95,10 +95,10 @@ public class Processamento{
 		LocalDateTime inicio2021 = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
 		LocalDateTime fim2021 = LocalDateTime.of(2022, 01, 01, 0, 0, 0);
 		for (int i = 0; i < dadosbrutos.size(); i++) {
-			String metodo = dadosbrutos.get(i).getmetodo();
-			LocalDateTime data = dadosbrutos.get(i).getdata();
+			String metodo = dadosbrutos.get(i).getMetodo();
+			LocalDateTime data = dadosbrutos.get(i).getData();
 			if ( metodo.equals("POST") && data.isAfter(inicio2021) && data.isBefore(fim2021)) {
-				tamanhos += dadosbrutos.get(i).gettamanhoObj();
+				tamanhos += dadosbrutos.get(i).getTamanhoObj();
 				quantidade += 1;
 				
 			}
