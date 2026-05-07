@@ -16,7 +16,7 @@ public class Main {
 	public void exibirMenu(Processamento processamento, Scanner scanner) {
 		int opcao = 1;
 		while (opcao != 0) {
-			System.out.print("1 - Recursos Grandes respondidos\n2 - Não respondidos\n3 - % de requisições por SO\n4 - Média das requisições POST\n0 - Sair\n");
+			System.out.print("1 - Recursos Grandes respondidos\n2 - Não respondidos\n3 - % de requisições por SO\n4 - Média das requisições POST\n0 - Sair\n\nDigite a opção desejada: ");
 			try { opcao = scanner.nextInt();
 				if (opcao == 1) {processamento.opcaoUm();}
 				else if (opcao == 2) {processamento.opcaoDois();}

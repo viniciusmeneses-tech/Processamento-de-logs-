@@ -92,7 +92,7 @@ public class Processamento{
 		int tamanhos = 0;
 		int quantidade = 0;
 		LocalDateTime inicio2021 = LocalDateTime.of(2020, 12, 31, 23, 59, 59);
-		LocalDateTime fim2021 = LocalDateTime.of(2022, 01, 01, 0, 0, 0);
+		LocalDateTime fim2021 = LocalDateTime.of(2022, 1, 1, 0, 0, 0);
 		for (int i = 0; i < dadosbrutos.size(); i++) {
 			String metodo = dadosbrutos.get(i).getMetodo();
 			LocalDateTime data = dadosbrutos.get(i).getData();
@@ -103,9 +103,14 @@ public class Processamento{
 			}
 			
 		}
-		int media = tamanhos/quantidade;
-		System.out.printf("O total de requisições do tipo POST em 2021 é de: %d", quantidade);
-		System.out.printf("\nA média do tamanho destas requisições é de: %d\n", media);
+		if(quantidade > 0){
+			int media = tamanhos/quantidade;
+			System.out.printf("O total de requisições do tipo POST em 2021 é de: %d", quantidade);
+			System.out.printf("\nA média do tamanho destas requisições é de: %d\n", media);
+		}
+		else{
+			System.out.println("Não houve requisições do tipo POST em 2021.");
+		}
 	}
 }
 
