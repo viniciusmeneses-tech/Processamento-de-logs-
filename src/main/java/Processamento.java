@@ -97,7 +97,8 @@ public class Processamento{
 		for (int i = 0; i < dadosbrutos.size(); i++) {
 			String metodo = dadosbrutos.get(i).getMetodo();
 			LocalDateTime data = dadosbrutos.get(i).getData();
-			if ( metodo.equals("POST") && data.isAfter(inicio2021) && data.isBefore(fim2021)) {
+			int codigo = dadosbrutos.get(i).getCodigoResposta();
+			if ( metodo.equals("POST") && data.isAfter(inicio2021) && data.isBefore(fim2021) && codigo >= 200 && codigo <= 299) {
 				tamanhos += dadosbrutos.get(i).getTamanhoObj();
 				quantidade += 1;
 				
