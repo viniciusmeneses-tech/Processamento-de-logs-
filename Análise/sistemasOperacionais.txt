@@ -1,0 +1,6 @@
+Windows 86.9345
+Macintosh 2.8164
+Ubuntu 2.1915
+Fedora 0.0867
+Mobile 4.9915
+Linux, outros 2.9794

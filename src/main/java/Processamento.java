@@ -1,6 +1,7 @@
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Processamento{
 	
@@ -80,7 +81,7 @@ public class Processamento{
 		}
 		String[] sistemas = {"Windows", "Macintosh", "Ubuntu", "Fedora", "Mobile", "Linux, outros"};
 		for (int i = 0; i < 6; i++) {
-			sistemasOperacionais.add( sistemas[i] + " " + String.format("%.4f", (quantidadeSO[i]/total * 100)));
+			sistemasOperacionais.add( sistemas[i] + " " + String.format(Locale.ENGLISH, "%.4f", (quantidadeSO[i]/total * 100)));
 		}
 		
 		Escrita escrita = new Escrita();
