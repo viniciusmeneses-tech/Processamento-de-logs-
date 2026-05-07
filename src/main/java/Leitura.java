@@ -15,7 +15,6 @@ public class Leitura {
     private String entrada = System.getProperty("user.dir") + "\\src\\main\\resources\\access.log";
     
     public List<Dados> lerArquivo() {
-    		System.out.println(entrada);
         List<Dados> listaDados = new ArrayList<>();
         BufferedReader leitor = null;
 
