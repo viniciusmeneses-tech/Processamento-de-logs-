@@ -1,8 +1,10 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
@@ -10,10 +12,10 @@ import java.util.regex.Pattern;
 
 public class Leitura {
 
-    private String entrada = "caminho/do/arquivo.log"; //precisa adicionar o caminho ainda
-
+    private String entrada = System.getProperty("user.dir") + "\\src\\main\\resources\\access.log";
+    
     public List<Dados> lerArquivo() {
-
+    		System.out.println(entrada);
         List<Dados> listaDados = new ArrayList<>();
         BufferedReader leitor = null;
 
@@ -56,7 +58,7 @@ public class Leitura {
             // Data e hora converter para LocalDateTime
             String dataTexto = matcher.group(2); // 19/Dec/2020:13:57:26 + 0100 em LocalDateTime
             DateTimeFormatter formatter =
-                    DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss Z");
+                    DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss Z", Locale.ENGLISH);
             LocalDateTime data = LocalDateTime.parse(dataTexto, formatter);
 
             //"GET /index.php HTTP/1.1"
@@ -64,10 +66,16 @@ public class Leitura {
             String[] partesReq = requisicao.split(" ");
             String metodo = partesReq[0];
             String recurso = partesReq[1];
-
-            int codigoResposta = Integer.parseInt(matcher.group(4));
-            int tamanhoObj = Integer.parseInt(matcher.group(5));
-
+            
+            int codigoResposta = 0;
+            int tamanhoObj = 0;
+            
+            try {
+            codigoResposta = Integer.parseInt(matcher.group(4));	
+            }catch(NumberFormatException e){codigoResposta = 0;}
+            try {
+            tamanhoObj = Integer.parseInt(matcher.group(5));
+            }catch(NumberFormatException e) {tamanhoObj = 0;}
             String referencia = matcher.group(6);
             String userAgent = matcher.group(7);
 
