@@ -1,24 +1,27 @@
-**Orientações Gerais:**
+# Analise de Log
 
-. Linguagem: Java 21 (LTS)
+Programa em Java para análise de arquivos de log do servidor Web Apache.
 
-. gitignore: Adicionem todos os arquivos de IDE e config pessoal no arquivo .gitignore
+## Requisitos
+- Java 8 ou superior
+- Maven
 
-**COMO DEVEM COMEÇAR:**
+## Como executar
+1. Coloque o arquivo `access.log` dentro de `src/main/resources/`
+2. Execute o programa pela classe `Main`
+3. Escolha uma opção do menu
 
-Clone do repositório:
+## Menu
+- `1` - Gera `recursosGrandes.txt` com requisições bem-sucedidas e objetos maiores que 2000 bytes
+- `2` - Gera `naoRespondidosNovembro.txt` com requisições com erro em novembro de 2021
+- `3` - Gera `sistemasOperacionais.txt` com percentual de acessos por sistema operacional em 2021
+- `4` - Exibe no terminal a média dos tamanhos das requisições POST em 2021
+- `0` - Encerra o programa
 
-git clone https://github.com/viniciusmeneses-tech/Processamento-de-logs-.git && cd Processamento-de-logs-
+## Arquivos gerados
+Os arquivos são salvos automaticamente na pasta `Análise/` no diretório raiz do projeto.
 
-code .
-
-mvn clean install
-
-
-**REGRAS DE CONTRIBUIÇÃO**
-
-1. Nunca faça push direto na main !!!!
-2. Sempre dê um git pull antes de começar para atualizar o projeto no seu pc loca
-3. Crie uma branch para sua tarefa: git checkout -b feature/coloca-aqui-oq-o-codigo-faz.
-4. Após terminar, faça o commit e o push da sua branch.
-5. tentem usar conventional commits - https://github.com/iuricode/padroes-de-commits <-- link dos tipos de commit
+## Equipe
+- [Yan Neves] (https://github.com/yan-dhsk)
+- [Vinicius Meneses] (https://github.com/viniciusmeneses-tech)
+- [Arthur Machado] (https://github.com/diasmarthur)
