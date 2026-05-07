@@ -24,8 +24,10 @@ public class Leitura {
             String linha;
 
             while ((linha = leitor.readLine()) != null) {
-                Dados dado = separarLinhas(linha);
-                listaDados.add(dado);
+            	Dados dado = separarLinhas(linha);
+            	if (dado != null) {
+            	    listaDados.add(dado);
+            	}
             }
 
         } catch (IOException e) {

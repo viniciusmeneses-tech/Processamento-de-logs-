@@ -105,7 +105,7 @@ public class Processamento{
 		}
 		int media = tamanhos/quantidade;
 		System.out.printf("O total de requisições do tipo POST em 2021 é de: %d", quantidade);
-		System.out.printf("\nA média do tamanho destas requisições é de: %d", media);
+		System.out.printf("\nA média do tamanho destas requisições é de: %d\n", media);
 	}
 }
 
