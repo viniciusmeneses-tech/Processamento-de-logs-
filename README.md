@@ -22,6 +22,6 @@ Programa em Java para análise de arquivos de log do servidor Web Apache.
 Os arquivos são salvos automaticamente na pasta `Análise/` no diretório raiz do projeto.
 
 ## Equipe
-- [Yan Neves] (https://github.com/yan-dhsk)
-- [Vinicius Meneses] (https://github.com/viniciusmeneses-tech)
-- [Arthur Machado] (https://github.com/diasmarthur)
+- [Yan Neves](https://github.com/yan-dhsk)
+- [Vinicius Meneses](https://github.com/viniciusmeneses-tech)
+- [Arthur Machado](https://github.com/diasmarthur)
